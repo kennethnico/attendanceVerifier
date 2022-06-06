@@ -1,9 +1,7 @@
 <?php
-//include('conn.php');
 $server = "172.19.202.77";
 $user = "registros";
 $password = "R3g1xtr0s!";
-//$password = "Pjcdmx@22!";
 $dbName = "registros";
 try {
     $conexion = new PDO("mysql:host=$server;dbname=$dbName", $user, $password);
@@ -12,23 +10,33 @@ try {
 } catch (PDOException $e) {
     exit("Error: " . $e->getMessage());
 }
-
 function validaExistencia($canal,$email){
     $sql = "SELECT * FROM cicloConf22 WHERE email='".$email."'";
     $query = $canal->prepare($sql);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_OBJ);
-
     if ($query->rowCount() > 0) {
-        echo "Encontrado";
-        /*foreach ($results as $result) {
-            echo "<tr><td>" . $result->id . "</td><td>" . $result->nombre . "</td><td>" . $result->email . "</td></tr>";
-        }*/
+        return false;
     }
     else{
-        echo "Sin existencias";
+        return true;
     }
 }
 
-validaExistencia($conexion,"krenicgm@gmailo.com");
+if(isset($_POST['enviar'])){
+    $nombreU = $_POST['nombre'];
+    $emailU = $_POST['email'];
+    if(validaExistencia($conexion,$emailU)){
+        ////////////// Insertar a la tabla la informacion generada /////////
+        $sql="insert into cicloConf22(nombre, email) values(:nombres,:email)";
+        $sql = $conexion->prepare($sql);
+        $sql->bindParam(':nombre', $nombreU);
+        $sql->bindParam(':email', $emailU);
+        $sql->execute();
+    }else{
+        echo "El email ya se encuentra en la DB";
+    }
+}else{
+    echo "Error en el isset";
+}
 ?>
