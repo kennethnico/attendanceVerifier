@@ -22,12 +22,27 @@ function validaExistencia($canal,$email){
         return true;
     }
 }
+function insertaValor($conn,$nom,$mail){
+    if(validaExistencia($conn,$mail)){
+        ////////////// Insertar a la tabla la información generada /////////
+        $sql="insert into cicloConf22(nombre, email) values(:nombre,:email)";
+        $sql = $conn->prepare($sql);
+        $sql->bindParam(':nombre', $nom);
+        $sql->bindParam(':email', $mail);
+        $sql->execute();
+        echo "Registro exitoso.";
+    }else{
+        echo "El email ya se encuentra en la DB.";
+    }
+}
 
+insertaValor($conexion,"Edwin Nicolas","email@xyz.com");
+/**
 if(isset($_POST['enviar'])){
     $nombreU = $_POST['nombre'];
     $emailU = $_POST['email'];
     if(validaExistencia($conexion,$emailU)){
-        ////////////// Insertar a la tabla la informacion generada /////////
+        ////////////// Insertar a la tabla la información generada /////////
         $sql="insert into cicloConf22(nombre, email) values(:nombres,:email)";
         $sql = $conexion->prepare($sql);
         $sql->bindParam(':nombre', $nombreU);
@@ -39,4 +54,5 @@ if(isset($_POST['enviar'])){
 }else{
     echo "Error en el isset";
 }
+*/
 ?>
