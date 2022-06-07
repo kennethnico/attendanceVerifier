@@ -3,6 +3,8 @@ $server = "172.19.202.77";
 $user = "registros";
 $password = "R3g1xtr0s!";
 $dbName = "registros";
+$name = $_POST['nnn'];
+$email = $_POST['eee'];
 try {
     $conexion = new PDO("mysql:host=$server;dbname=$dbName", $user, $password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,29 +32,41 @@ function insertaValor($conn,$nom,$mail){
         $sql->bindParam(':nombre', $nom);
         $sql->bindParam(':email', $mail);
         $sql->execute();
-        echo "Registro exitoso.";
-    }else{
-        echo "El email ya se encuentra en la DB.";
-    }
-}
+        echo '<div class="img-form">
+                    <img src="./assets/logos/isoooom.png" alt="IMG">
+               </div>
+               <span class="login100-form-title">Se ha registrado su asistencia con éxito.</span>';
 
-insertaValor($conexion,"Edwin Nicolas","email@xyz.com");
-/**
-if(isset($_POST['enviar'])){
-    $nombreU = $_POST['nombre'];
-    $emailU = $_POST['email'];
-    if(validaExistencia($conexion,$emailU)){
-        ////////////// Insertar a la tabla la información generada /////////
-        $sql="insert into cicloConf22(nombre, email) values(:nombres,:email)";
-        $sql = $conexion->prepare($sql);
-        $sql->bindParam(':nombre', $nombreU);
-        $sql->bindParam(':email', $emailU);
-        $sql->execute();
     }else{
-        echo "El email ya se encuentra en la DB";
+        echo '<div class="img-form">
+                    <img src="./assets/logos/isoooom.png" alt="IMG">
+                </div>
+                <span class="login100-form-title">Bienvenido</span>
+                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20"><small style="justify-self: center;">Para registrar tu asistencia, proporciona los siguientes datos: </small></div>
+                <div class="wrap-input100 validate-input" data-validate = "Valor requerido.">
+                    <input class="input100" type="text" name="nom" placeholder="Nombre completo">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate = "Es necesario un email válido: ex@abc.xyz">
+                    <input class="input100" type="email" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" name="enviar" type="submit">
+                        Enviar
+                    </button>
+                </div>
+                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20" id="resultado">
+                <small style="justify-self: center;">Tu asistencia ya ha sido registrada. Gracias.</small>
+                </div>';
     }
-}else{
-    echo "Error en el isset";
 }
-*/
+insertaValor($conexion,$name,$email);
 ?>

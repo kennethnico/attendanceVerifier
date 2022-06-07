@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +26,6 @@
     <!--===============================================================================================-->
 </head>
 <body>
-
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -32,16 +33,12 @@
                 <img src="./assets/logos/logoCiclo.png" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form" method="post" name="checker" action="" onsubmit="enviarDatosAsistente(); return false;">
+            <form class="login100-form validate-form" id="testeo" method="post" name="checker" action="" onsubmit="enviarDatosAsistente(); return false;">
                 <div class="img-form">
-                <img src="./assets/logos/isoooom.png" alt="IMG">
+                    <img src="./assets/logos/isoooom.png" alt="IMG">
                 </div>
-					<span class="login100-form-title">
-						Bienvenido
-					</span>
-                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20">
-                    <small style="justify-self: center;">Para registrar tu asistencia, proporciona los siguientes datos: </small>
-                </div>
+                <span class="login100-form-title">Bienvenido</span>
+                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20"><small style="justify-self: center;">Para registrar tu asistencia, proporciona los siguientes datos: </small></div>
                 <div class="wrap-input100 validate-input" data-validate = "Valor requerido.">
                     <input class="input100" type="text" name="nom" placeholder="Nombre completo">
                     <span class="focus-input100"></span>
@@ -63,17 +60,7 @@
                     </button>
                 </div>
                 <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20" id="resultado">
-                    <small style="justify-self: center;"> </small>
-                </div>
-<!--
-                <div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-                    <a class="txt2" href="#">
-                        Username / Password?
-                    </a>
-                </div>-->
+                    <small style="justify-self: center;"> </small></div>
             </form>
         </div>
     </div>
