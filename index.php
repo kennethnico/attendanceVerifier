@@ -38,7 +38,7 @@
                     <img src="./assets/logos/isoooom.png" alt="IMG">
                 </div>
                 <span class="login100-form-title">Bienvenido</span>
-                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20"><small style="justify-self: center;">Para registrar tu asistencia, proporciona los siguientes datos: </small></div>
+                <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20"><small style="justify-self: center;">Para registrar tu asistencia, proporciona los siguientes datos, deben ser los mismos de tu registro: <br> </small></div>
                 <div class="wrap-input100 validate-input" data-validate = "Valor requerido.">
                     <input class="input100" type="text" name="nom" placeholder="Nombre completo">
                     <span class="focus-input100"></span>
@@ -53,10 +53,10 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
                 </div>
-
+                <div style="justify-content: center; text-align: center; color: var(--primary-color);"><small style="justify-self: center;">Antes de continuar, verifica que tus datos sean correctos.<br> </small></div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" name="enviar" type="submit">
-                        Enviar
+                        Enviar datos
                     </button>
                 </div>
                 <div style="justify-content: center; text-align: center; color: var(--primary-color);" class="m-b-20" id="resultado">

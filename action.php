@@ -5,6 +5,9 @@ $password = "R3g1xtr0s!";
 $dbName = "registros";
 $name = $_POST['nnn'];
 $email = $_POST['eee'];
+/**setlocale (LC_TIME, "es_MX");*/
+date_default_timezone_set('America/Mexico_City');
+$dater = date('Y-m-d H:i:s');
 try {
     $conexion = new PDO("mysql:host=$server;dbname=$dbName", $user, $password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,13 +27,14 @@ function validaExistencia($canal,$email){
         return true;
     }
 }
-function insertaValor($conn,$nom,$mail){
+function insertaValor($conn,$nom,$mail,$dater){
     if(validaExistencia($conn,$mail)){
         ////////////// Insertar a la tabla la información generada /////////
-        $sql="insert into cicloConf22(nombre, email) values(:nombre,:email)";
+        $sql="insert into cicloConf22(nombre, email,fecha) values(:nombre,:email,:fecha)";
         $sql = $conn->prepare($sql);
         $sql->bindParam(':nombre', $nom);
         $sql->bindParam(':email', $mail);
+        $sql->bindParam(':fecha', $dater);
         $sql->execute();
         echo '<div class="img-form">
                     <img src="./assets/logos/isoooom.png" alt="IMG">
@@ -68,5 +72,5 @@ function insertaValor($conn,$nom,$mail){
                 </div>';
     }
 }
-insertaValor($conexion,$name,$email);
+insertaValor($conexion,$name,$email,$dater);
 ?>
