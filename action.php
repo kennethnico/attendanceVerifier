@@ -3,7 +3,8 @@ $server = "172.19.202.77";
 $user = "registros";
 $password = "R3g1xtr0s!";
 $dbName = "registros";
-$name = $_POST['nnn'];
+//$name = html_entity_decode($_POST['nnn'], ENT_QUOTES | ENT_HTML401, "UTF-8");
+$name = utf8_decode($_POST['nnn']);
 $email = $_POST['eee'];
 /**setlocale (LC_TIME, "es_MX");*/
 date_default_timezone_set('America/Mexico_City');
